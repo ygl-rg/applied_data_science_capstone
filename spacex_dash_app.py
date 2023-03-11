@@ -77,12 +77,12 @@ def get_scatter(launch_site, payload_range):
     # Select data
     if launch_site == 'ALL':
         df = spacex_df[(spacex_df['Payload Mass (kg)']<=payload_range[1])&(payload_range[0]<=spacex_df['Payload Mass (kg)'])]
-        fig = px.scatter(df, x='Payload Mass (kg)', y='class', color='Booster Version Category')
+        fig = px.strip(df, x='Payload Mass (kg)', y='class', color='Booster Version Category')
         return fig
     else:
         df = spacex_df[
             (spacex_df['Payload Mass (kg)'] <= payload_range[1]) & (payload_range[0] <= spacex_df['Payload Mass (kg)']) & (spacex_df['Launch Site']==launch_site)]
-        fig = px.scatter(df, x='Payload Mass (kg)', y='class', color='Booster Version Category')
+        fig = px.strip(df, x='Payload Mass (kg)', y='class', color='Booster Version Category')
         return fig
 # Run the app
 if __name__ == '__main__':
